@@ -13,18 +13,6 @@
 
 ActiveRecord::Schema.define(version: 20140803155558) do
 
-  create_table "projects", force: true do |t|
-    t.string   "name"
-    t.string   "start_date"
-    t.string   "end_date"
-    t.string   "description"
-    t.string   "address"
-    t.string   "city"
-    t.string   "country"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-  end
-
   create_table "trips", force: true do |t|
     t.string   "name"
     t.string   "country"
