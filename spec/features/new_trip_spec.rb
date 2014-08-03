@@ -16,5 +16,13 @@ feature 'New Trip' do
 		click_button "Create Trip"
 
 		expect(page).to have_content ('Trip has been created.')
+
+		trip = Trip.where(name:"Panama City Beach").first
+
+		expect(page.current_url).to eql(trip_url(trip))
+
+		title = "Panama City Beach - Trips - BOAB Online Registration"
+		expect(page).to have_title(title)
+
 	end
 end
