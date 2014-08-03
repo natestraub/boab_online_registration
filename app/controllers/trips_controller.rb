@@ -1,4 +1,5 @@
 class TripsController < ApplicationController
+	before_action :set_trip, only: [:show, :edit, :update, :destroy]
 	def index
 		@trips = Trip.all
 	end
@@ -20,15 +21,12 @@ class TripsController < ApplicationController
 	end
 
 	def show
-		@trip = Trip.find(params[:id])
 	end
 
 	def edit
-		@trip = Trip.find(params[:id])
 	end
 
 	def update
-		@trip = Trip.find(params[:id])
 		@trip.update(trip_params)
 
 		flash[:notice] = "Trip has been updated."
@@ -36,7 +34,6 @@ class TripsController < ApplicationController
 	end
 
 	def destroy
-		@trip = Trip.find(params[:id])
 		@trip.destroy
 
 		flash[:notice] = "Trip has been deleted."
@@ -47,6 +44,11 @@ class TripsController < ApplicationController
 		def trip_params
 			params.require(:trip).permit(:name, :start_date, :end_date, :description, :address, :city, :country)
 		end
+
+		def set_trip
+			@trip = Trip.find(params[:id])
+		rescue ActiveRecord::RecordNotFound
+			flash[:alert] = "The trip you were looking for could not be found."
+			redirect_to trips_path
+		end
 end
-
-
