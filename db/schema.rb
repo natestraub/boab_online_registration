@@ -11,7 +11,20 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140803155558) do
+ActiveRecord::Schema.define(version: 20140805234159) do
+
+  create_table "rooms", force: true do |t|
+    t.string   "name"
+    t.string   "description"
+    t.integer  "min_people"
+    t.integer  "max_people"
+    t.decimal  "cost",        precision: 10, scale: 0
+    t.integer  "trip_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "rooms", ["trip_id"], name: "index_rooms_on_trip_id", using: :btree
 
   create_table "trips", force: true do |t|
     t.string   "name"

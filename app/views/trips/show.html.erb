@@ -1,11 +1,15 @@
 <% @title = "Panama City Beach - Trips - BOAB Online Registration" %>
 <h2> <% @trip.name %></h2>
 
-<%= link_to "Edit Trip", edit_trip_path(@trip) %>
+<p><%= link_to "Edit Trip", edit_trip_path(@trip) %></p>
 
-<%= link_to "Delete Trip",
+<p>
+	<%= link_to "Delete Trip",
 	trip_path(@trip),
 	method: :delete,
 	data: { confirm:
 				"Are you sure you want to delete this trip?"
-		  }	%> 
+		  }	%>
+</p>
+
+<p><%= link_to "New Room Type", new_trip_room_path(@trip) %></p>
