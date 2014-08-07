@@ -1,6 +1,9 @@
 require 'spec_helper.rb'
 
 feature "Deleting trips" do
+	before do
+    	sign_in_as!(FactoryGirl.create(:admin_user))
+  	end
 	scenario "Deleting a project" do
 		FactoryGirl.create(:trip, name: "Panama City Beach")
 

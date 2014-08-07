@@ -1,6 +1,9 @@
 require 'spec_helper'
 
 feature "Editing trips" do
+	before do
+    	sign_in_as!(FactoryGirl.create(:admin_user))
+  	end
 	scenario "Updating a trip" do
 		FactoryGirl.create(:trip, name: "Panama City Beach")
 
