@@ -1,11 +1,15 @@
 require 'spec_helper'
 
 feature 'New Trip' do
-	scenario 'can create a trip' do
+	before do
+		sign_in_as!(FactoryGirl.create(:admin_user))
+
 		visit '/'
 
 		click_link 'New Trip'
+	end
 
+	scenario 'can create a trip' do
 		fill_in 'Name', with: 'Panama City Beach'
 		fill_in 'Start Date', with: '03/13/2014'
 		fill_in 'End Date', with: '03/20/2014'

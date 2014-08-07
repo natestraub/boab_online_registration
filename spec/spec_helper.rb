@@ -24,7 +24,7 @@ RSpec.configure do |config|
   # config.mock_with :mocha
   # config.mock_with :flexmock
   # config.mock_with :rr
-
+  config.infer_spec_type_from_file_location!
   # Remove this line if you're not using ActiveRecord or ActiveRecord fixtures
   config.fixture_path = "#{::Rails.root}/spec/fixtures"
 
@@ -60,4 +60,9 @@ RSpec.configure do |config|
   config.infer_spec_type_from_file_location!
 
   config.expose_current_running_example_as :example
+
+
+  config.include FactoryGirl::Syntax::Methods
+  config.include Capybara::DSL
+  config.include Rails.application.routes.url_helpers
 end
